@@ -47,3 +47,25 @@ nav {
     bottom: unset;
   }
 }
+
+.basket-list {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  background-color: #fff;
+  max-width: 95%;
+}
+
+.basket-close {
+  cursor: pointer;
+  position: fixed;
+  top: .5rem;
+  right: .5rem;
+  color: #fff
+}
+
+.basket-delete {
+  cursor: pointer
+}

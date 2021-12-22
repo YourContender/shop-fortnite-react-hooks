@@ -1,8 +1,8 @@
 function Cart(props) {
-    const {quantity} = props;
+    const {quantity, handleBasketShow} = props;
 
     return (
-        <div className="cart yellow darken-2">
+        <div className="cart yellow darken-2" onClick={handleBasketShow}>
             <i className="material-icons">shopping_cart</i>
                 {quantity ? (
                     <span className="cart-quantity">{quantity}</span>
