@@ -11,8 +11,30 @@ function Shop() {
     const [order, setOrder] = useState([]);
     const [isBasketShow, setBasketShow] = useState(false);
 
+    const createMethodIncDec = (item, value) => {
+        const newOrder = order.map((elem) => {
+            if (item.id === elem.id) {
+                return {
+                    ...item,
+                    quantity: elem.quantity >= 1 ? elem.quantity + value : 1
+                }
+            } else {
+                return elem
+            }
+        })
+        setOrder(newOrder)
+    }
+
     const handleBasketShow = () => {
         setBasketShow(!isBasketShow)
+    }
+
+    const deleteProd = (id) => {
+        let filtered = order.filter(item => {
+            return item.id !== id
+        })
+
+        setOrder(filtered);
     }
 
     useEffect(function getGoods() {
@@ -57,7 +79,7 @@ function Shop() {
         <main className='container content'>  
             <Cart handleBasketShow={handleBasketShow} quantity={order.length}/>
             {loading ? <Preloader /> : <GoodsList goods={goods} changeOrder={changeOrder}/>}
-            {isBasketShow ? <BasketList order={order} handleBasketShow={handleBasketShow}/> : null}
+            {isBasketShow ? <BasketList order={order} handleBasketShow={handleBasketShow} deleteProd={deleteProd} createMethodIncDec={createMethodIncDec}/> : null}
         </main>
     )
 }

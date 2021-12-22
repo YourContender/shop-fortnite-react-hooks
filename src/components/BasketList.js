@@ -1,7 +1,7 @@
 import BasketItem from "./BasketItem";
 
 function BasketList(props) {
-    const { order, handleBasketShow } = props;
+    const { order, handleBasketShow, deleteProd, createMethodIncDec } = props;
 
     const totalPrice = order.reduce((sum, elem) => {
         return sum + elem.price * elem.quantity
@@ -12,7 +12,7 @@ function BasketList(props) {
             <li className="collection-item active">Корзина</li>
             {
                 order.length ? order.map((item) => {
-                    return <BasketItem key={item.id} {...item}/>
+                    return <BasketItem key={item.id} deleteProd={deleteProd} createMethodIncDec={createMethodIncDec} {...item}/>
                 }) : <li className="collection-item">Корзина пустая</li>
             }
             <li className="collection-item active">Общая стоимость {totalPrice}</li>

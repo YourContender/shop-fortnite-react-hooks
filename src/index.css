@@ -56,6 +56,7 @@ nav {
   width: 50rem;
   background-color: #fff;
   max-width: 95%;
+  animation: show 500ms ease-in-out;
 }
 
 .basket-close {
@@ -67,5 +68,27 @@ nav {
 }
 
 .basket-delete {
-  cursor: pointer
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+}
+
+.basket-arrow {
+  cursor: pointer;
+  top: 8rem;
+}
+
+.collection-item {
+  display: flex;
+}
+
+@keyframes show {
+  from {
+    top: 70%;
+    opacity: 0;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
 }
