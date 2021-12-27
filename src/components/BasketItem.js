@@ -4,9 +4,9 @@ function BasketItem(props) {
     return (
         <li className="collection-item">
             {name} 
-            <i className="material-icons basket-arrow" onClick={() => createMethodIncDec({id, name, quantity, price}, -1)}>chevron_left</i>
+            <i className="material-icons basket-arrow" onClick={() => createMethodIncDec(id, -1)}>chevron_left</i>
                 x{quantity === 0 ? deleteProd(id) : quantity} 
-            <i className="material-icons basket-arrow" onClick={() => createMethodIncDec({id, name, quantity, price}, 1)}>chevron_right</i>
+            <i className="material-icons basket-arrow" onClick={() => createMethodIncDec(id, 1)}>chevron_right</i>
             = {price * quantity}
             <span className="secondary-content" onClick={() => deleteProd(id)}>
                 <i className="material-icons basket-delete">close</i>

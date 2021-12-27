@@ -11,12 +11,13 @@ function Shop() {
     const [order, setOrder] = useState([]);
     const [isBasketShow, setBasketShow] = useState(false);
 
-    const createMethodIncDec = (item, value) => {
+    const createMethodIncDec = (id, action) => {
         const newOrder = order.map((elem) => {
-            if (item.id === elem.id) {
+            if (id === elem.id) {
+                const newQuantity = elem.quantity + action;
                 return {
-                    ...item,
-                    quantity: elem.quantity >= 1 ? elem.quantity + value : 1
+                    ...elem,
+                    quantity: newQuantity >= 1 ? newQuantity : 0
                 }
             } else {
                 return elem
