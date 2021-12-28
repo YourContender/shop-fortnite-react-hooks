@@ -4,12 +4,14 @@ import GoodsList from "./GoodsList";
 import Preloader from "./Preloader";
 import Cart from "./Cart";
 import BasketList from "./BasketList";
+import Alert from "./Alert";
 
 function Shop() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
     const [isBasketShow, setBasketShow] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     const createMethodIncDec = (id, action) => {
         const newOrder = order.map((elem) => {
@@ -74,6 +76,11 @@ function Shop() {
             })
            setOrder(newOrder);
         }
+        setAlertName(item.name)
+    }
+
+    const closeAlert = () => {
+        setAlertName('')
     }
 
     return (
@@ -81,6 +88,7 @@ function Shop() {
             <Cart handleBasketShow={handleBasketShow} quantity={order.length}/>
             {loading ? <Preloader /> : <GoodsList goods={goods} changeOrder={changeOrder}/>}
             {isBasketShow ? <BasketList order={order} handleBasketShow={handleBasketShow} deleteProd={deleteProd} createMethodIncDec={createMethodIncDec}/> : null}
+            {alertName ? <Alert name={alertName} closeAlert={closeAlert}/> : null}
         </main>
     )
 }

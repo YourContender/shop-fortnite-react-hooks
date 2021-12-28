@@ -15,7 +15,14 @@ function BasketList(props) {
                     return <BasketItem key={item.id} deleteProd={deleteProd} createMethodIncDec={createMethodIncDec} {...item}/>
                 }) : <li className="collection-item">Корзина пустая</li>
             }
-            <li className="collection-item active">Общая стоимость {totalPrice}</li>
+            <li className="collection-item active">
+                Общая стоимость: {totalPrice}  
+            </li>
+            <li className="collection-item active">
+                <button className="secondary-content btn btn-small">
+                    Оформить    
+                </button>    
+            </li>
             <i className='material-icons basket-close' onClick={handleBasketShow}>close</i>
         </ul>
     )
